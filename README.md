@@ -122,53 +122,122 @@ You will see a GUI with:
 
 ## 🔍 Workflow
 
-### 1️⃣ Choose a file
+## **1️⃣ Choose a File**
 
-Pick a CSV from the dropdown.
+Use the dropdown to select any CSV from your dataset.
 
-### 2️⃣ Visualize motion
+Each filename contains important metadata:
 
-Click **Visualize** → gravity X/Y/Z is plotted.
+```
+011224_APULL_W61_S1_R12-2024-12-01_07-36-28.csv
+          │    │   │   └─ R12 → Expected 12 repetitions  
+          │    │   └──── S1 → Set 1
+          │    └────── W61 → Weight used
+          └──────────── APULL → Exercise code (e.g., Pullups)
+```
 
-<img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/fdbf4d58-3f34-4a83-ae2f-7ef5ac1171d1" />#
-
-This allows you to see where active movement starts/ends.
-
----
-
-### 3️⃣ Set frames
-
-* **Start frame:** first peak / movement
-* **End frame:** last movement
-
-Idle before/after these frames will be removed.
+✔ **RXX = expected number of reps**
+✔ **WXX = weight**
+✔ **S = set number**
+✔ **Code maps to the exercise group** (using FINE_MAP)
 
 ---
 
-### 4️⃣ Save Segments
+## **2️⃣ Visualize the Motion**
+
+Press **“Visualize”**.
+
+You will see gravityX / gravityY / gravityZ:
+
+🟦 gravityX
+🟩 gravityY
+🟥 gravityZ
+
+Vertical dashed lines show the selected frame range.
+
+This plot helps you locate:
+
+* The **first movement**
+* The **last movement**
+* Any **idle before** or **idle after**
+<img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/fdbf4d58-3f34-4a83-ae2f-7ef5ac1171d1" />
+
+---
+
+## **3️⃣ Match With the Filename Rep Count (IMPORTANT)**
+
+Before trimming, **you MUST check that the number of visible reps matches the filename label.**
+
+Example:
+
+Filename → `R10`
+Then visually, you should see **10 full cycles (up–down or down–up peaks)**.
+
+⚠ Why this matters?
+
+Open-source data often contains:
+
+* Long idle before starting
+* Long idle after finishing
+* Extra noise at the end
+* Sometimes partial reps the watch captured accidentally
+
+👉 **Your job is to cut the plot so that ONLY the correct number of reps remain.**
+
+So the final trimmed segment must contain:
+
+* **Exactly RXX motion cycles**
+* No idle before/after
+* Peaks aligned with the expected number of reps
+
+---
+
+## **4️⃣ Set the Frames**
+
+After identifying the correct region:
+
+* **Start Frame** → first clear rep peak
+* **End Frame** → last clear rep peak
+
+Everything outside this range is treated as **idle**.
+
+You can adjust these numbers manually while checking the visualization.
+
+---
+
+## **5️⃣ Save Segments**
 
 Click **Save Segments**.
 
-This generates:
+This will create two files:
 
 ```
-data_processed/
- ├── <file>_active.csv
- └── <file>_idle.csv
+<filename>_active.csv    # Only the active movement part
+<filename>_idle.csv      # Everything else marked as Idle
 ```
 
-Active file includes:
+The active segment includes:
 
-```
-label = "<exercise>"
-```
+* All gravity / acceleration data
+* A new column `label` (with exercise name)
 
-Idle file includes:
+The idle segment includes:
 
-```
-label = "Idle"
-```
+* Only idle data
+* `label = Idle`
 
+These segmented files will later be merged into one big dataset for ML training.
+
+---
+
+## ✔ **End Result**
+
+You produce a **clean, correctly-labeled** dataset where:
+
+* Active motion matches the expected rep count
+* Idle noise is removed
+* ML models will train MUCH better
+* Rep detection and classification become far more accurate
 ---
 
 # 🏷 4. Exercise Label Mapping (FINE_MAP)
