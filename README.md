@@ -1,4 +1,4 @@
-# 🏋️‍♂️ Gym IMU Manual Segmentation Tool
+<img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/fdbf4d58-3f34-4a83-ae2f-7ef5ac1171d1" /># 🏋️‍♂️ Gym IMU Manual Segmentation Tool
 
 *A dataset cleanup tool for manually separating Active vs Idle motion in Apple Watch IMU recordings.*
 
@@ -114,10 +114,10 @@ You will see a GUI with:
 * start/end frame selectors
 * save buttons
 
-### Example UI (add screenshot later)
+### Example UI
 
 ```
-[screenshot_placeholder_ui.png]
+<img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/8911ab60-7b87-4890-be1a-80166eaa70d7" />
 ```
 
 ---
@@ -133,7 +133,8 @@ Pick a CSV from the dropdown.
 Click **Visualize** → gravity X/Y/Z is plotted.
 
 ```
-[screenshot_placeholder_plot.png]
+<img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/6d415855-8f5e-4442-9b63-29438f9173d4" />
+
 ```
 
 This allows you to see where active movement starts/ends.
