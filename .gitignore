@@ -1,0 +1,28 @@
+# Ignore raw dataset (too large for GitHub)
+data_raw/
+
+# Jupyter notebook temporary folders
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS system files
+.DS_Store
+
+# IDE settings
+.vscode/
+.idea/
+
+# Optional: ignore large outputs
+*.mp4
+*.mov
+*.avi
+*.gif
+
+# Kaggle downloads
+*.zip
+*.7z
+*.rar
+
