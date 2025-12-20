@@ -116,9 +116,7 @@ You will see a GUI with:
 
 ### Example UI
 
-```
 <img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/fdbf4d58-3f34-4a83-ae2f-7ef5ac1171d1" />#
-```
 
 ---
 
@@ -132,9 +130,7 @@ Pick a CSV from the dropdown.
 
 Click **Visualize** → gravity X/Y/Z is plotted.
 
-```
 <img width="704" height="435" alt="Screenshot 2025-12-20 at 15 33 42" src="https://github.com/user-attachments/assets/fdbf4d58-3f34-4a83-ae2f-7ef5ac1171d1" />#
-```
 
 This allows you to see where active movement starts/ends.
 
